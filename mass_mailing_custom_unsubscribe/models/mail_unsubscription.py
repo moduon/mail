@@ -86,18 +86,20 @@ class MailUnsubscription(models.Model):
                     _("Please provide details on why you are unsubscribing.")
                 )
 
-    @api.model
-    def create(self, vals):
-        # No reasons for subscriptions
-        if vals.get("action") in {"subscription", "blacklist_rm"}:
-            vals = dict(vals, reason_id=False, details=False)
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            # No reasons for subscriptions
+            if vals.get("action") in {"subscription", "blacklist_rm"}:
+                vals = dict(vals, reason_id=False, details=False)
+        return super().create(vals_list)
 
 
 class MailUnsubscriptionReason(models.Model):
     _name = "mail.unsubscription.reason"
     _description = "Mail unsubscription reason"
     _order = "sequence, name"
+    _inherit = ["mail.thread"]
 
     name = fields.Char(index=True, translate=True, required=True)
     details_required = fields.Boolean(
