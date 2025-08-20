@@ -7,3 +7,5 @@
   - Pedro M. Baeza
   - Carlos Roca
   - Pilar Vargas
+
+- [Joel Estrada](https://moduon.com)

@@ -5,4 +5,4 @@ Once configured:
     *Footers*, so people have an *Unsubscribe* link.
 3.  Send it.
 4.  If somebody gets unsubscribed, you will see logs about that under
-    *Email Marketing \> Unsubscriptions*.
+    *Email Marketing \> Reporting \> optout*.
